@@ -16,7 +16,6 @@ model Users {
   updatedAt DateTime @updatedAt @map("updated_at")
 
   userInfos UserInfos?  // 사용자(Users) 테이블과 사용자 정보(UserInfos) 테이블이 1:1 관계를 맺습니다. , 1명의 사용자는 1개의 사용자 정보를 가진다.
-  Resume  Resume [] // // 1명의 사용자는 여러개의 이력서를 작성할 수 있다.
   @@map("user")
 }
 
@@ -35,7 +34,7 @@ model UserInfos {
 
 // 이름, 모델이름        내가 참조 받는 값,     참조 해주는 값
   user   Users @relation(fields: [UserId], references: [userId], onDelete: Cascade)
-
+  Resume  Resume [] // // 1명의 사용자는 여러개의 이력서를 작성할 수 있다.
   @@map("user_infos")
 }
 
@@ -57,7 +56,7 @@ model Resume {
   createdAt        DateTime  @default(now()) @map("created_at")
   updatedAt        DateTime  @updatedAt @map("updated_at")
 
-  user   Users @relation(fields: [UserId], references: [userId], onDelete: Cascade)
+  userInfo   UserInfos @relation(fields: [UserId], references: [UserId], onDelete: Cascade)
 
   @@map("resume")
 }
