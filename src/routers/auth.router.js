@@ -152,14 +152,15 @@ router.post('/auth/sign-in', async (req, res, next) => {
 
     // 4. **반환 정보**
     //     - **AccessToken**을 반환합니다.
-    res.cookie('refreshToken', `Bearer ${refreshToken}`); // Refresh Token을 Cookie에 전달(반환)한다.
-    res.cookie('accessToken', `Bearer ${accessToken}`); // Access Token을 Cookie에 전달(반환)한다.
+    // res.cookie('refreshToken', `Bearer ${refreshToken}`); // Refresh Token을 Cookie에 전달(반환)한다.
+    // res.cookie('accessToken', `Bearer ${accessToken}`); // Access Token을 Cookie에 전달(반환)한다.
 
     return res
         .status(200)
         .json({
-            message:
-                'Token이 정상적으로 발급되었습니다.' /* , accessToken: accessToken*/,
+            message: 'Token이 정상적으로 발급되었습니다.',
+            accessToken: `Bearer ${accessToken}`,
+            refreshToken: `Bearer ${refreshToken}`
         });
 });
 

@@ -1,4 +1,4 @@
-import express, { request } from 'express';
+import express from 'express';
 import requireAccessTokenMiddleware from '../middlewares/require-access-token.middleware.js';
 import { prisma } from '../utils/prisma.util.js';
 
