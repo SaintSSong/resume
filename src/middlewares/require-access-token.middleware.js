@@ -8,7 +8,9 @@ import { prisma } from '../utils/prisma.util.js';
 
 export default async (req, res, next) => {
   try {
-    const { accessToken } = req.cookies;
+    // const { accessToken } = req.cookies;
+    const accessToken = req.headers['authorization'];
+
     //     2. 유효성 검증 및 에러 처리
     //     - Authorization 또는 AccessToken이 없는 경우 - “인증 정보가 없습니다.”
     if (!accessToken) {
